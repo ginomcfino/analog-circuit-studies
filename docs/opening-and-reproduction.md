@@ -4,7 +4,7 @@
 
 Use Qucs-S 26.1.1 or a compatible later version with **ngspice selected**. The files originated in Qucs-S 25.2.0. On macOS, `.sch` may be associated with KiCad; open these files from Qucs-S's **File → Open** command.
 
-1. Open `qucs-s/<study>/project/<study>.sch`.
+1. Open `<study>-qucs-s/project/<study>.sch`.
 2. Keep its matching `.dat.ngspice` file and `models/` folder in place.
 3. Use **View All** to see the circuit and embedded results. Open the neighboring `<study>.dpl` for a separate, arranged plot view.
 
@@ -22,7 +22,7 @@ To inspect saved numerical data in ngspice **without rerunning a circuit**, run 
 
 ```sh
 python3 tools/prepare-ngspice-view.py
-cd ngspice/555-two-tone-siren/viewer
+cd 555-two-tone-siren-ngspice/viewer
 ngspice -n load-saved-data.spice
 ```
 

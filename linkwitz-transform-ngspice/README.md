@@ -33,4 +33,4 @@ ngspice -b linkwitz-transform.cir > run.log 2>&1
 
 Keep `models/` beside the netlist. New fixed-name outputs stay in `source/`; supplied evidence remains under `results/`. Only the relative model include was changed. Use this command rather than the historical filename in the source comment.
 
-Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../../docs/opening-and-reproduction.md).
+Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../docs/opening-and-reproduction.md).

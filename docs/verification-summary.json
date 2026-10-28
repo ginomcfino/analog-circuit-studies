@@ -22,6 +22,13 @@
     "guitar-vibrato": 6,
     "dual-rail-12v-supply": 5
   },
-  "window_screenshots": false,
-  "visual_evidence": "Native Qucs exports and plots from recorded data"
+  "window_screenshots": true,
+  "visual_evidence": "Actual Qucs-S schematic window captures, native Qucs exports and plots from recorded data",
+  "window_screenshot_count": 3,
+  "window_screenshot_application": "Qucs-S 26.1.1",
+  "layout_and_screenshot_refresh": {
+    "simulations": 0,
+    "circuit_model_dataset_existing_plot_bytes_unchanged": true,
+    "screenshots": 3
+  }
 }

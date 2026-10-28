@@ -37,4 +37,4 @@ ngspice -b bjt-amplifier.cir > run.log 2>&1
 
 Models are embedded. Circuit content is unchanged apart from the filename. A new log stays in `source/`, separate from the supplied evidence under `results/`.
 
-Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../../docs/opening-and-reproduction.md).
+Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../docs/opening-and-reproduction.md).

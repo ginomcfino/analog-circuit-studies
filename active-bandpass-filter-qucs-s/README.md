@@ -4,6 +4,12 @@ An LM324 study with cascaded high-pass and low-pass stages, multitone excitation
 
 Open [the schematic](project/active-bandpass-filter.sch) in **Qucs-S with the ngspice backend selected**. Its [current dataset](project/active-bandpass-filter.dat.ngspice) accompanies the existing diagrams. Results were generated with **Qucs-S 26.1.1** netlist export and **ngspice 47**.
 
+## Schematic
+
+![Qucs-S schematic overview](docs/images/qucs-schematic.jpg)
+
+Qucs-S 26.1.1 schematic overview captured from the application window; some saved plots are visible on the worksheet.
+
 ## Amplitude sweep
 
 `VinAmp` sweeps the 1 kHz sine input from 0.1 to 5 V across 20 settings. All 20 runs completed, with distinct observed input amplitudes from **0.09999915 to 4.99995835 V peak**. The transient stores 20,001 points over 100 ms: **5 µs spacing**, or 20 samples per 10 kHz cycle.

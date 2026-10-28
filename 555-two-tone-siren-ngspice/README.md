@@ -34,4 +34,4 @@ ngspice -b 555-two-tone-siren.cir > run.log 2>&1
 
 Keep `models/` beside the netlist. A new run writes its fixed output filenames into `source/`; the supplied evidence remains separately preserved under `results/`. Only the relative model include was changed for this organization.
 
-Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../../docs/opening-and-reproduction.md).
+Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../docs/opening-and-reproduction.md).

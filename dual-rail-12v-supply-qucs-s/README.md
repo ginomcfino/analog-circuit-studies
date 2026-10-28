@@ -4,6 +4,12 @@ A transformer, rectifier and reservoir/filter supply study with positive and neg
 
 Open [the schematic](project/dual-rail-12v-supply.sch) in the **Qucs-S GUI with its ngspice backend**. The source files record Qucs 25.2.0. The [saved dataset](project/dual-rail-12v-supply.dat.ngspice) contains 2,012 time points over 200 ms, and five diagram panels are embedded in the schematic. Original base/final schematics differ only in view/output names; their datasets are byte-identical.
 
+## Schematic
+
+![Qucs-S schematic overview](docs/images/qucs-schematic.jpg)
+
+Qucs-S 26.1.1 schematic overview captured from the application window; some saved plots are visible on the worksheet.
+
 ## Saved results
 
 ![Saved supply startup](results/plots/startup-transient.png)

@@ -27,4 +27,4 @@ ngspice -b hartley-oscillator.cir > run.log 2>&1
 
 No external model files are required. New outputs are written to `source/`; supplied evidence stays under `results/`. The source writes `Hartley_` output names, while the supplied SVGs use lowercase `hartley_`. Circuit content is unchanged; the canonical source was renamed, so use the command above rather than its historical filename comment.
 
-Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../../docs/opening-and-reproduction.md).
+Saved numerical results can also be loaded in ngspice without rerunning the circuit; see the [collection viewing guide](../docs/opening-and-reproduction.md).

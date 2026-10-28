@@ -14,6 +14,8 @@ Reviewed on 2026-10-28 using Qucs-S 26.1.1 and ngspice 47. These checks concern 
 
 The native ngspice viewing helper successfully loaded eight saved datasets and produced 15 SVG views without analysis commands. It preserves the precision of the supplied numbers.
 
-Qucs schematics were checked through its native ngspice netlister; matching `.dpl` plot views were loaded and exported by Qucs itself. Native exports are labeled as exports, not screenshots. Window automation was unreliable, including after restarting the app. The command-line printer selects Qucsator and cannot directly render SPICE-only schematic components; separate data displays avoid that printer limitation without changing circuit symbols.
+Qucs schematics were checked through its native ngspice netlister; matching `.dpl` plot views were loaded and exported by Qucs itself. Those native exports remain labeled as exports. Three actual **Qucs-S 26.1.1 application-window captures** now show the schematic overviews; some saved plots are also visible on the worksheets. The command-line printer selects Qucsator and cannot directly render SPICE-only schematic components; separate data displays avoided that printer limitation without changing circuit symbols.
+
+The folder-layout and schematic-screenshot refresh performed **no simulations** and preserved the existing circuit, model, dataset and plot bytes. The earlier simulation runs and saved-data checks listed above remain the verification history.
 
 Current source, result and plot files are identified in [the file manifest](files-sha256.json). Each study's metrics/logs identify the numerical evidence where available. Original working copies and superseded outputs are retained outside this showcase in the portfolio archive.

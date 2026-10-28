@@ -4,6 +4,12 @@ A simulation study of two JFET phase-shift stages, behavioral op amps, and a dry
 
 Open [the schematic](project/guitar-vibrato.sch) in **Qucs-S with ngspice**. The matching [native dataset](project/guitar-vibrato.dat.ngspice) was regenerated with **Qucs-S 26.1.1 / ngspice 47**: 202 AC points and 100,008 transient points over one second. No simulator warnings were recorded.
 
+## Schematic
+
+![Qucs-S schematic overview](docs/images/qucs-schematic.jpg)
+
+Qucs-S 26.1.1 schematic overview captured from the application window; some saved plots are visible on the worksheet.
+
 ![JFET gate modulation](results/plots/gate-control.png)
 
 Both gates track the 5 Hz source with approximately **0.229 V peak modulation** around **−1.071 V DC**. [Vector plot](results/plots/gate-control.svg).
