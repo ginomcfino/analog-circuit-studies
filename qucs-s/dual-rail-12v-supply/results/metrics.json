@@ -1,0 +1,136 @@
+{
+  "provenance": {
+    "source_file": "dual_rail_12V_supply/dual_rail_12v_supply_final.dat.ngspice",
+    "sha256": "f4564017bb1d269a412d6f9e6325226d2b1dbbd9fbd8630d9c6905e57b1191d4",
+    "packaged_dataset": "project/dual-rail-12v-supply.dat.ngspice",
+    "source_format": "Qucs Dataset 25.2.0",
+    "simulator_backend_recorded": "ngspice",
+    "simulation_rerun": false,
+    "processing": "Read stored numbers; compute ratios/statistics and redraw plots. No simulation, fitting, or synthetic signal generation."
+  },
+  "arrays": {
+    "time": {
+      "kind": "indep",
+      "header": "time 2012",
+      "count": 2012
+    },
+    "tran.v(dc_unreg_neg)": {
+      "kind": "dep",
+      "header": "tran.v(dc_unreg_neg) time",
+      "count": 2012
+    },
+    "tran.v(dc_unreg_pos)": {
+      "kind": "dep",
+      "header": "tran.v(dc_unreg_pos) time",
+      "count": 2012
+    },
+    "tran.v(sec_a)": {
+      "kind": "dep",
+      "header": "tran.v(sec_a) time",
+      "count": 2012
+    },
+    "tran.v(sec_b)": {
+      "kind": "dep",
+      "header": "tran.v(sec_b) time",
+      "count": 2012
+    },
+    "tran.v(vac_in)": {
+      "kind": "dep",
+      "header": "tran.v(vac_in) time",
+      "count": 2012
+    },
+    "tran.v(v_neg_12)": {
+      "kind": "dep",
+      "header": "tran.v(v_neg_12) time",
+      "count": 2012
+    },
+    "tran.v(v_pos_12)": {
+      "kind": "dep",
+      "header": "tran.v(v_pos_12) time",
+      "count": 2012
+    }
+  },
+  "analyses": {
+    "transient": {
+      "points": 2012,
+      "time_s": [
+        0.0,
+        0.2
+      ]
+    },
+    "detail_window_s": [
+      0.15,
+      0.2
+    ]
+  },
+  "saved_voltage_stats": {
+    "dc_unreg_pos": {
+      "full_record": {
+        "min": 2.062875898114e-25,
+        "max": 20.31845144998,
+        "mean": 19.69512286277022,
+        "peak_to_peak": 20.31845144998,
+        "last": 20.31841036671
+      },
+      "150_to_200_ms": {
+        "min": 20.29914705147,
+        "max": 20.31845144998,
+        "mean": 20.309629827457204,
+        "peak_to_peak": 0.019304398509998322,
+        "last": 20.31841036671
+      }
+    },
+    "dc_unreg_neg": {
+      "full_record": {
+        "min": -20.31845144998,
+        "max": -2.064101890165e-25,
+        "mean": -19.69512286277019,
+        "peak_to_peak": 20.31845144998,
+        "last": -20.31841036671
+      },
+      "150_to_200_ms": {
+        "min": -20.31845144998,
+        "max": -20.29914705147,
+        "mean": -20.309629827457083,
+        "peak_to_peak": 0.019304398509998322,
+        "last": -20.31841036671
+      }
+    },
+    "v_pos_12": {
+      "full_record": {
+        "min": -2.0,
+        "max": 12.01686804714,
+        "mean": 11.755252695897996,
+        "peak_to_peak": 14.01686804714,
+        "last": 11.99887777413
+      },
+      "150_to_200_ms": {
+        "min": 11.99887777413,
+        "max": 11.99887777413,
+        "mean": 11.998877774129996,
+        "peak_to_peak": 0.0,
+        "last": 11.99887777413
+      }
+    },
+    "v_neg_12": {
+      "full_record": {
+        "min": -12.01686804714,
+        "max": 2.0,
+        "mean": -11.755252695897996,
+        "peak_to_peak": 14.01686804714,
+        "last": -11.99887777413
+      },
+      "150_to_200_ms": {
+        "min": -11.99887777413,
+        "max": -11.99887777413,
+        "mean": -11.998877774129996,
+        "peak_to_peak": 0.0,
+        "last": -11.99887777413
+      }
+    }
+  },
+  "caveats": [
+    "LM7812_EQ and LM7912_EQ are supplied behavioral equivalents, not manufacturer device models.",
+    "Base and final saved datasets are byte-identical."
+  ]
+}

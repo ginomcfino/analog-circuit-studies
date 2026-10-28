@@ -1,0 +1,7 @@
+.SUBCKT LM7912_EQ IN GND OUT
+* -12V regulator equivalent with ~2V dropout
+BREG OUT GND V = { V(IN,GND) < -14 ? -12 : V(IN,GND)+2 }
+ROUT OUT GND 0.05
+COUT OUT GND 10u
+RMIN OUT GND 1k
+.ENDS LM7912_EQ

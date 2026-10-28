@@ -1,0 +1,144 @@
+{
+  "dataset": "guitar-vibrato.dat.ngspice",
+  "block_count": 18,
+  "all_numbers_finite": true,
+  "all_declared_lengths_match": true,
+  "all_diagram_references_exist": true,
+  "diagram_references": [
+    "ac.v(buf_dry)",
+    "ac.v(stage1_out)",
+    "ac.v(wet_out)",
+    "tran.v(mod_in)",
+    "tran.v(bias_in)",
+    "tran.v(out)",
+    "tran.v(buf_dry)",
+    "tran.v(wet_out)",
+    "tran.v(buf_dry)",
+    "tran.v(wet_out)",
+    "tran.v(out)"
+  ],
+  "blocks": {
+    "frequency": {
+      "type": "indep",
+      "count": 202,
+      "dependencies": []
+    },
+    "ac.v(bias_in)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(buf_dry)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(gate1)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(gate2)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(mod_in)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(out)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(stage1_out)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "ac.v(wet_out)": {
+      "type": "dep",
+      "count": 202,
+      "dependencies": [
+        "frequency"
+      ]
+    },
+    "time": {
+      "type": "indep",
+      "count": 100008,
+      "dependencies": []
+    },
+    "tran.v(bias_in)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(buf_dry)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(gate1)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(gate2)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(mod_in)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(out)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(stage1_out)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    },
+    "tran.v(wet_out)": {
+      "type": "dep",
+      "count": 100008,
+      "dependencies": [
+        "time"
+      ]
+    }
+  }
+}

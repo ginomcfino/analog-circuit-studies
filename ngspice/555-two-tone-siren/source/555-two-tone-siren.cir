@@ -1,0 +1,131 @@
+* 555 Police "Dee-Dah" Siren
+
+
+
+* 555bip pin order:
+* Vcc GND Threas Reset Vctrl Dis Out Trig
+
+.include models/BIP-555.lib
+
+
+* -----------------------------------------------------
+* Design calculations
+* -----------------------------------------------------
+
+* IC1 asymmetric astable:
+*   t_on = 0.693 * R1 * C1 = 0.693 * 82k * 12u = 0.682s
+*   t_off = 0.693 * R2 * C1 = 0.693 * 33k * 12u = 0.274s
+*   T_mod = 0.956s
+*   duty = R1 / (R1 + R2) = 71.3%
+
+* IC2 nominal astable frequency:
+*   f_nom = 1.44 / ((R3 + 2 * R4) * C3)
+*         = 1.44 / ((200k + 2 * 10k) * 10n)
+*         = 655Hz
+
+* CTRL2 switched bias:
+*   Q1 off: CTRL2 (approx 6.27V) -> dah (approx 583Hz)
+*   Q1 on:  CTRL2 (approx 5.72V) -> dee (approx 713Hz)
+*   R5 = 22k limits Q1 base current without heavily loading IC1.
+
+* Speaker coupling:
+*   fc = 1 / (2 * pi * R6 * C4)
+*      = 1 / (2 * pi * 8* 220u)
+*      = 90.5Hz
+* Hardware note:
+*   The 8ohm speaker load is chosen to match the task specification.
+*   A physical implementation may use an output buffer.
+
+
+* -----------------------------------------------------
+* Circuit:
+* -----------------------------------------------------
+
+VCC VCC 0 DC 9
+CDEC VCC 0 100n
+
+* IC1 - slow modulation timer
+R1 VCC MOD_DIS 82k
+R2 MOD_DIS MOD_TH 33k
+D1 MOD_DIS MOD_TH 1N4148
+C1 MOD_TH 0 12u
+C2 MOD_CTRL 0 10n
+XIC1 VCC 0 MOD_TH VCC MOD_CTRL MOD_DIS MOD_OUT MOD_TH 555bip
+
+* IC2 - audio oscillator
+R3 VCC AUDIO_DIS 200k
+R4 AUDIO_DIS AUDIO_TH 10k
+C3 AUDIO_TH 0 10n
+
+* Switched CTRL2 bias network
+RPULL VCC CTRL2 15k
+RCTRL_BIAS CTRL2 0 62k
+RSW CTRL2 QCOL 27k
+R5 MOD_OUT QBASE 22k
+Q1 QCOL QBASE 0 QN3904
+
+XIC2 VCC 0 AUDIO_TH VCC CTRL2 AUDIO_DIS AUDIO_OUT AUDIO_TH 555bip
+
+* AC-coupled speaker load
+C4 AUDIO_OUT SPK 220u
+R6 SPK 0 8
+
+.model 1N4148 D (IS=2.52n RS=0.568 N=1.752 BV=100 IBV=0.1u CJO=4p M=0.4 TT=20n)
+.model QN3904 NPN (IS=6.734f BF=300 VAF=100 IKF=0.225 ISE=1.234e-11 NE=1.5 CJC=3.638p MJC=0.3085 VJC=0.75 CJE=4.493p MJE=0.377 VJE=0.75 TF=3.048e-10 TR=1.259e-7)
+
+
+* -----------------------------------------------------
+* Simulation and measurements
+* -----------------------------------------------------
+
+.control
+* set noaskquit
+set filetype=ascii
+set hcopydevtype=svg
+set xbrushwidth=2
+
+* 5.2s transient with 20us step captures 3+ cycles
+tran 20u 5.2 0
+
+wrdata siren_modulation.dat v(MOD_OUT)
+wrdata siren_speaker.dat v(SPK)
+
+hardcopy siren_modulation.svg v(MOD_OUT)
+hardcopy siren_speaker.svg v(SPK)
+hardcopy siren_speaker_dee.svg v(SPK) xlimit 1.45 1.48
+hardcopy siren_speaker_dah.svg v(SPK) xlimit 1.90 1.93
+
+
+* IC1 period and duty cycle over 3 complete cycles
+meas tran t_r1 when v(MOD_OUT)=4.5 rise=1 from=1.0 to=5.0
+meas tran t_f1 when v(MOD_OUT)=4.5 fall=1 from=1.0 to=5.0
+meas tran t_r2 when v(MOD_OUT)=4.5 rise=2 from=1.0 to=5.0
+meas tran t_f2 when v(MOD_OUT)=4.5 fall=2 from=1.0 to=5.0
+meas tran t_r3 when v(MOD_OUT)=4.5 rise=3 from=1.0 to=5.0
+meas tran t_f3 when v(MOD_OUT)=4.5 fall=3 from=1.0 to=5.0
+meas tran t_r4 when v(MOD_OUT)=4.5 rise=4 from=1.0 to=5.0
+
+let mod_period = (t_r4-t_r1) / 3
+let duty_cycle = 100 * ((t_f1-t_r1) + (t_f2-t_r2) + (t_f3-t_r3)) / (t_r4-t_r1)
+
+* Dee tone - IC1 high, measured over 5 speaker cycles
+meas tran spk_d1 when v(SPK)=0 rise=10 from=1.20 to=1.60
+meas tran spk_d6 when v(SPK)=0 rise=15 from=1.20 to=1.60
+let f_dee = 5 / (spk_d6-spk_d1) 
+
+* Dah tone - IC1 low, measured over 5 speaker cycles
+meas tran spk_a1 when v(SPK)=0 rise=10 from=1.90 to=2.05
+meas tran spk_a6 when v(SPK)=0 rise=15 from=1.90 to=2.05
+let f_dah = 5 / (spk_a6-spk_a1)
+
+* Save and print reported measurements
+set wr_vecnames
+wrdata siren_measurements.dat mod_period duty_cycle f_dee f_dah
+
+
+print mod_period duty_cycle f_dee f_dah
+
+* quit
+.endc
+
+.end

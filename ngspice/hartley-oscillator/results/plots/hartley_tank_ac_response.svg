@@ -1,0 +1,83 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  width="100%" height="100%" viewBox="0 0 1024 768"
+  style="fill: none; font-family: Helvetica;
+ font: Helvetica;
+">
+
+<!-- Creator: NGspice -->
+
+<rect x="0" y="0" width="1024" height="768" fill="black" stroke="none"/>
+<text stroke="none" fill="white" font-size="16" x="358" y="752">
+frequency
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="16">
+ac1: Hartley LC Oscillator 100kHz
+</text>
+<path stroke="white" d="M70 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="50" y="728">
+10^4
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M147 704l0 -640M203 704l0 -640M245 704l0 -640M280 704l0 -640M310 704l0 -640M336 704l0 -640M358 704l0 -640M378 704l0 -640M397 704l0 -640M413 704l0 -640M429 704l0 -640M443 704l0 -640M456 704l0 -640"/>
+<path stroke="white" stroke-dasharray="1,2" d="M469 704l0 -640M480 704l0 -640M491 704l0 -640M502 704l0 -640"/>
+<path stroke="white" d="M512 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="492" y="728">
+10^5
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M589 704l0 -640M645 704l0 -640M687 704l0 -640M722 704l0 -640M752 704l0 -640M778 704l0 -640M800 704l0 -640M820 704l0 -640M839 704l0 -640M855 704l0 -640M871 704l0 -640M885 704l0 -640M898 704l0 -640"/>
+<path stroke="white" stroke-dasharray="1,2" d="M911 704l0 -640M922 704l0 -640M933 704l0 -640M944 704l0 -640"/>
+<path stroke="white" d="M954 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="934" y="728">
+10^6
+</text>
+<text stroke="none" fill="white" font-size="16" x="614" y="752">
+Hz
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 704l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="712">
+200.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 624l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="632">
+300.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 544l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="552">
+400.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 464l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="472">
+500.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 384l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="392">
+600.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 304l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="312">
+700.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 224l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="232">
+800.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 144l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="152">
+900.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M70 64l884 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="72">
+1000.0
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="32">
+Ohms
+</text>
+<path stroke="red" d="M442 23l44 0"/>
+<text stroke="none" fill="white" font-size="16" x="496" y="32">
+tank_z
+</text>
+<path stroke="red" d="M444 689l2 -5 2 -6 2 -7 3 -6 6 -24 2 -9 3 -10 2 -10 2 -11 2 -13 3 -13 2 -14 2 -16 2 -18 3 -19 2 -21 2 -23 2 -25 3 -28 2 -30 2 -33 2 -34 3 -37 2 -36 2 -35 2 -31 3 -23 2 -13 2 -1 2 11 3 22 2 30 2 34 4 74 3 35 2 34 2 30 2 29"/>
+<path stroke="red" d="M535 437l3 26 2 23 2 22 2 19 3 18 2 16 2 15 2 13 3 13 2 12 4 20"/>
+</svg>

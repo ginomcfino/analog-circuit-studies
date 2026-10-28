@@ -1,0 +1,132 @@
+* Hartley LC Oscillator - 100kHz
+*
+* Run: ngspice Hartley_LC_Oscillator_100kHz_final.cir
+* -----------------------------------------------------------------------
+* DESIGN
+* -----------------------------------------------------------------------
+* LC tank sets f0 = 1/(2*pi*sqrt(Ltot*C)):
+*   L1=100uH, L2=153uH (Ltot=253uH), C=10nF -> f_design=100kHz
+*   R1w/R2w=14ohm DCR, Rp=100k parallel loss
+* Tuning: larger Ltot or C lowers f0; smaller raises f0.
+*
+* Loop gain: beta=L2/(L1+L2)=0.6047, A_min=1.654, A_nom=1+7.8k/10k=1.78
+* Amplitude control: anti-parallel diode limiter with 16k series R across Rf
+*   shunts feedback as |Vrf| grows, reducing loop gain before the rails.
+* Op-amp: generic single-pole macromodel, AOL~200000V/V,
+*   GBW~11MHz with C1=14p, 150ohm series Rout.
+
+.title Hartley LC Oscillator 100kHz
+
+* -----------------------------------------------------------------------
+* OP-AMP (generic; rail-limited amp + 150ohm series Rout, not shunt load)
+* -----------------------------------------------------------------------
+.subckt OPAMP INP INM VP VN VOA
+G1    0     INT  INP INM  1m
+R1    INT   0    200MEG
+C1    INT   0    14p
+E1    NDRV  0    VALUE={MIN(MAX(V(INT), V(VN)+1.5), V(VP)-1.5)}
+Rout  NDRV  VOA  150
+.ends
+
+* -----------------------------------------------------------------------
+* SUPPLIES (+/-15V)
+* -----------------------------------------------------------------------
+VCC VCC 0 DC 15
+VEE VEE 0 DC -15
+Cb1 VCC 0 100n
+Cb2 VEE 0 100n
+
+* -----------------------------------------------------------------------
+* HARTLEY TANK (probe: VOUT)
+* -----------------------------------------------------------------------
+R1w  VOUT  N_L1  14
+L1   N_L1  VTAP  100u
+L2   VTAP  N_L2  153u
+R2w  N_L2  0     14
+C    VOUT  0     10n
+Rp   VOUT  0     100k
+
+* -----------------------------------------------------------------------
+* GAIN NETWORK + DIODE LIMITER (Rg/Rf + soft anti-parallel clamp)
+* -----------------------------------------------------------------------
+Rg   INV   0     10k
+Rf   VOUT  INV   7.8k
+
+Rs1  VOUT  D1P   16k
+D1   D1P   INV   1N4148
+Rs2  INV   D2P   16k
+D2   D2P   VOUT  1N4148
+.model 1N4148 D (IS=2.52n RS=0.568 N=1.752 BV=100 IBV=0.1u CJO=4p M=0.4 TT=0)
+
+* (op-amp subckt: +input=VTAP, -input=INV, supplies=VCC/VEE, output=VOUT)
+XU1 VTAP INV VCC VEE VOUT OPAMP
+
+* (startup seed for oscillator growth)
+.ic v(VOUT)=1n
+
+* -----------------------------------------------------------------------
+* AC TANK CHECK
+* -----------------------------------------------------------------------
+Vdrv TOUT 0 DC 0 AC 1
+R1wa  TOUT     N_T1     14
+L1a   N_T1     VTAP_AC  100u
+L2a   VTAP_AC  N_T2     153u
+R2wa  N_T2     0        14
+Ca    TOUT     0        10n
+Rpa   TOUT     0        100k
+
+* -----------------------------------------------------------------------
+* SIMULATION
+* -----------------------------------------------------------------------
+.control
+set noaskquit
+set hcopydevtype=svg
+
+* AC tank |Z| peak
+ac dec 200 70k 130k
+let tank_z = abs(v(TOUT)/i(Vdrv))
+meas ac zpk max tank_z
+hardcopy Hartley_tank_ac_response.svg tank_z
+
+* Startup transient (0-80us)
+tran 10n 80u 0 uic
+wrdata Hartley_startup_transient.dat v(VOUT)
+hardcopy Hartley_startup_transient.svg v(VOUT)
+
+* Steady-state (5ms run; plot zoom 4.80-4.85ms, ~5 cycles)
+tran 10n 5m 0 uic
+hardcopy Hartley_steady_state_zoom.svg v(VOUT) xlimit 4.80m 4.85m
+
+* steady-state measurements
+meas tran vpk_hi max v(VOUT) from=4.5m to=5m
+meas tran vpk_lo min v(VOUT) from=4.5m to=5m
+let vpp_steady = vpk_hi - vpk_lo
+
+meas tran t_z1 when v(VOUT)=0 rise=1 from=4.8m to=5m
+meas tran t_z2 when v(VOUT)=0 rise=2 from=4.8m to=5m
+meas tran t_z3 when v(VOUT)=0 rise=3 from=4.8m to=5m
+meas tran t_z4 when v(VOUT)=0 rise=4 from=4.8m to=5m
+meas tran t_z5 when v(VOUT)=0 rise=5 from=4.8m to=5m
+let f_meas = 4 / ((t_z2 - t_z1) + (t_z3 - t_z2) + (t_z4 - t_z3) + (t_z5 - t_z4))
+let f_design = 100e3
+let f_err_pct = 100 * abs(f_meas - f_design) / f_design
+
+let beta = 153.0 / 253.0
+let a_nom = 1 + 7.8e3 / 10e3
+let loop_gain = beta * a_nom
+
+echo "============ Hartley LC Oscillator Results ============"
+echo "Generic OPAMP Ltot=253uH C=10nF beta=0.6047 A_nom=1.78"
+echo "Amplitude control: diode limiter Rs=16k; op-amp C1=14p"
+print f_design f_meas f_err_pct vpp_steady
+print beta a_nom loop_gain
+echo "AC tank |Z| peak: see zpk AT = above (target ~100kHz)"
+echo "======================================================="
+
+
+
+* quit
+.endc
+
+
+.end

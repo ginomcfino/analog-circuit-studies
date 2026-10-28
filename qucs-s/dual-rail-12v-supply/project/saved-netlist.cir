@@ -1,0 +1,72 @@
+* Qucs 25.2.0 - dual-rail-12v-supply.sch
+.INCLUDE "models/ngspice_mathfunc.inc"
+.INCLUDE "models/xfmr.cir"
+
+.SUBCKT LM7812_EQ IN GND OUT
+* +12V regulator equivalent with ~2V dropout
+BREG OUT GND V = { V(IN,GND) > 14 ? 12 : V(IN,GND)-2 }
+ROUT OUT GND 0.05
+COUT OUT GND 10u
+RMIN OUT GND 1k
+.ENDS LM7812_EQ
+
+.SUBCKT LM7912_EQ IN GND OUT
+* -12V regulator equivalent with ~2V dropout
+BREG OUT GND V = { V(IN,GND) < -14 ? -12 : V(IN,GND)+2 }
+ROUT OUT GND 0.05
+COUT OUT GND 10u
+RMIN OUT GND 1k
+.ENDS LM7912_EQ
+V1 VAC_IN _net0 DC 0 SIN(0 325 50 0 0 0) AC 325 ACPHASE 0
+RF1 VAC_IN _net1  1 tc1=0.0 tc2=0.0 
+X_Tr1_W1 _net1 _net0 0 _net3  XFMR RATIO=0.065
+X_Tr1_W2 _net1 _net0 _net2 0  XFMR RATIO=0.065
+D1 SEC_A DC_UNREG_POS DMOD_D1 AREA=1.0
+.MODEL DMOD_D1 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.1 Tt=0.0P Kf=0.0 Af=1.0 Bv=1000 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+D2 SEC_B DC_UNREG_POS DMOD_D2 AREA=1.0
+.MODEL DMOD_D2 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.1 Tt=0.0P Kf=0.0 Af=1.0 Bv=1000 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+D3 DC_UNREG_NEG SEC_A DMOD_D3 AREA=1.0
+.MODEL DMOD_D3 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.1 Tt=0.0P Kf=0.0 Af=1.0 Bv=1000 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+D4 DC_UNREG_NEG SEC_B DMOD_D4 AREA=1.0
+.MODEL DMOD_D4 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.1 Tt=0.0P Kf=0.0 Af=1.0 Bv=1000 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+R1 _net2 SEC_A  0.5 tc1=0.0 tc2=0.0 
+R2 _net3 SEC_B  0.5 tc1=0.0 tc2=0.0 
+R3 DC_UNREG_NEG 0  1MEGEG tc1=0.0 tc2=0.0 
+R4 0 DC_UNREG_POS  1MEGEG tc1=0.0 tc2=0.0 
+C1 0 DC_UNREG_POS  2200U 
+C2 0 DC_UNREG_POS  100N 
+C3 DC_UNREG_NEG 0  2200U 
+C4 DC_UNREG_NEG 0  100N 
+C5 0 DC_UNREG_POS  33U 
+C6 0 _net4  0.1U 
+C7 DC_UNREG_NEG 0  33U 
+C8 _net5 0  0.1U 
+R5 0 _net4  120 tc1=0.0 tc2=0.0 
+R6 _net5 0  120 tc1=0.0 tc2=0.0 
+RFUSE_POS _net4 V_POS_12  0.1 tc1=0.0 tc2=0.0 
+RFUSE_NEG1 _net5 V_NEG_12  0.1 tc1=0.0 tc2=0.0 
+C9 0 V_POS_12  100U 
+C10 0 V_POS_12  100N 
+C11 V_NEG_12 0  100U 
+C12 V_NEG_12 0  100N 
+R7 V_POS_12 _net6  1K tc1=0.0 tc2=0.0 
+DLED1 _net6 0 DMOD_LED1 AREA=1.0
+.MODEL DMOD_LED1 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.0 Tt=0.0P Kf=0.0 Af=1.0 Bv=10 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+R8 0 _net7  1K tc1=0.0 tc2=0.0 
+DLED2 _net7 V_NEG_12 DMOD_LED2 AREA=1.0
+.MODEL DMOD_LED2 D (Is=1E-15 N=1 Cj0=10F M=0.5 Vj=0.7 Fc=0.5 Rs=0.0 Tt=0.0P Kf=0.0 Af=1.0 Bv=10 Ibv=1M Xti=3.0 Eg=1.11 Tcv=0.0 Trs=0.0 Ttt1=0.0 Ttt2=0.0 Tm1=0.0 Tm2=0.0 Tnom=26.85 )
+R9 0 VAC_IN  1G tc1=0.0 tc2=0.0 
+R10 _net1 0  1G tc1=0.0 tc2=0.0 
+X1 DC_UNREG_POS 0 _net4 LM7812_EQ 
+X2 DC_UNREG_NEG 0 _net5 LM7912_EQ 
+
+.control
+
+tran 0.00010005 0.2 0 
+write spice4qucs.tr1.plot v(DC_UNREG_NEG) v(DC_UNREG_POS) v(SEC_A) v(SEC_B) v(VAC_IN) v(V_NEG_12) v(V_POS_12)
+destroy all
+reset
+
+exit
+.endc
+.END

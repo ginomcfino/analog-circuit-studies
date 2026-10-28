@@ -1,15 +1,23 @@
 # Analog Circuit Studies
 
-My manually developed circuit and simulation work in Qucs-S and ngspice, including analysis of a supplied reference circuit.
+Seven analog engineering studies covering filters, oscillators, audio modulation, amplification, equalization and power-supply behavior. Original circuit/simulation work was manually developed; component models and reference material retain their attribution. These are simulations, not hardware measurements.
 
-| Study | Included material | Status |
-| --- | --- | --- |
-| [Linkwitz transform](linkwitz-transform/) | Parameterized equalizer netlist, TL072 model, reference schematic, AC and transient data and plots | Simulation study |
-| [Active bandpass filter](active-bandpass-filter/) | Cascaded filter schematic, netlist and saved AC/transient sweep data | Simulation study |
-| [Guitar vibrato](guitar-vibrato/) | Schematic, netlist and saved AC/transient data | Connectivity review needed |
+## Study index
 
-These studies are not physically validated; no hardware measurements are included. Saved outputs have been preserved, not regenerated for this collection. They are evidence of simulation runs, not proof that every design meets its intended requirements.
+| Study | Open with | What it demonstrates | Evidence |
+| --- | --- | --- | --- |
+| [Active bandpass filter](qucs-s/active-bandpass-filter/) | Qucs-S + ngspice | Cascaded LM324 filtering, multitone response and diode limiting | Verified AC and corrected 20-setting amplitude sweep |
+| [Guitar phase-shift / modulation](qucs-s/guitar-vibrato/) | Qucs-S + ngspice | JFET phase control and dry/wet blending | Verified 5 Hz gate modulation and changing wet-path phase |
+| [Dual ±12 V supply](qucs-s/dual-rail-12v-supply/) | Qucs-S + ngspice | Rectification, reservoir filtering and behavioral regulation | Saved startup and output-rail data reviewed |
+| [555 two-tone siren](ngspice/555-two-tone-siren/) | ngspice | Slow timing control and alternating audio-frequency oscillation | Saved waveforms and frequency/duty measurements |
+| [Hartley LC oscillator](ngspice/hartley-oscillator/) | ngspice | Tank resonance, startup and amplitude limiting | Saved startup data and steady-state plots |
+| [Two-stage BJT amplifier](ngspice/bjt-amplifier/) | ngspice | Bias, gain, drive level and coupling-capacitor response | Saved console results and extracted plots |
+| [Linkwitz transform equalizer](ngspice/linkwitz-transform/) | ngspice | Equalization and a sealed-box speaker equivalent | Saved AC and transient data and plots |
 
-The Linkwitz reference image identifies an educational example associated with a 2015 seminar. That reference topology and the bundled amplifier models are third-party material, distinct from my manual circuit/simulation work. Existing reference annotations and model headers are retained.
+`qucs-s/` contains graphical Qucs-S projects **using the ngspice simulation engine**. `ngspice/` contains native text-netlist projects. The distinction is the editing/viewing workflow; all seven studies use ngspice models/results.
 
-See the [visual gallery](docs/visuals.md) and each study's notes for dependencies and known limitations. Circuit source files are preserved unchanged.
+Start with the [visual gallery](docs/visuals.md), then each study's README for its stimulus, analyses, results and model limits. See [opening and reproduction](docs/opening-and-reproduction.md) for saved-data viewing, and [verification](docs/verification.md) for what was checked.
+
+The two corrected Qucs-S studies include fresh matching datasets. The supply and four native ngspice studies retain their supplied results without rerunning their circuits. Supporting models are bundled where required; duplicate working copies and obsolete outputs are excluded from this showcase.
+
+[Model and reference attribution](docs/third-party-material.md).

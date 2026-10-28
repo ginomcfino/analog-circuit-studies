@@ -1,0 +1,104 @@
+.title Two-Stage BJT Amplifier (2N3904 class, single-supply)
+
+* Parameters (altered in .control for stressed / comparison cases)
+.param VINAMP = 10m
+.param CC = 10u
+
+* Circuit: two common emitter stages, capacitor-coupled, +12V supply.
+* Emitter resistors are split: part is bypassed at AC for stable DC bias,
+* part stays in the signal path to limit gain so 10mV drives stays linear.
+
+VCC vcc 0 DC 12
+Vin in 0 DC 0 AC 1 SIN(0 {VINAMP} 1k 0 0)
+
+* stage 1
+R1 vcc b1 100k
+R2 b1 0 22k
+RC1 vcc c1 3.3k
+RE1a e1 e1t 560
+RE1b e1t 0 440
+CE1 e1t 0 100u
+Q1 c1 b1 e1 2N3904
+CIN in b1 {CC}
+
+* Interstage coupling
+C2 c1 b2 {CC}
+
+* stage 2
+R3 vcc b2 100k
+R4 b2 0 22k
+RC2 vcc out 3.3k
+RE2a e2 e2t 560
+RE2b e2t 0 440
+CE2 e2t 0 100u
+Q2 out b2 e2 2N3904
+RL out 0 10k
+
+* 2N3904 parameters (from datasheet)
+.model 2N3904 NPN (
++ Is=6.734f Xti=3 Eg=1.11 Vaf=74.03 Bf=416.4 Ne=1.307
++ Ise=6.734f Ikf=0.0667 Xtb=1.5 Br=0.7371 Nc=2 Isc=0 Ikr=0 Rc=1
++ Cjc=3.638p Mjc=0.3085 Vjc=0.75 Fc=0.5 Cje=4.493p Mje=0.2593 Vje=0.75
++ Tr=239.5n Tf=301.2p Itf=0.4 Xtf=2 Rb=10)
+
+.control
+set noaskquit
+
+echo "================================================================"
+echo " 1) DC OPERATING POINT - both stages should be forward active"
+echo "    (VCE >> ~0.2V, VBE ~ 0.65-0.75V, IC in the mA range)"
+echo "================================================================"
+op
+print v(b1) v(e1) v(c1) v(b2) v(e2) v(out)
+print @q1[ic] @q2[ic]
+print v(b1)-v(e1) v(b2)-v(e2) v(c1)-v(e1) v(out)-v(e2)
+
+echo "================================================================"
+echo " 2) NOMINAL TRANSIENT - Vin = 10 mVpk @ 1kHz"
+echo "    PLOT: v(out) vs ideal linear output (5.615 + 20*v(in)), same axes"
+echo "    Nominal: traces overlap; large-signal: reference exceeds what v(out) can follow"
+echo "================================================================"
+tran 20u 60m
+meas tran vout_hi MAX v(out) FROM=35m TO=60m
+meas tran vout_lo MIN v(out) FROM=35m TO=60m
+meas tran vin_hi MAX v(in) FROM=35m TO=60m
+meas tran vin_lo MIN v(in) FROM=35m TO=60m
+* Coupling caps ~20 ms time constant; use 35-60 ms window (settled midband)
+asciiplot v(out) (5.615+20*v(in))
+
+echo "================================================================"
+echo " 3) AC - voltage gain vs frequency (1 Hz .. 10 MHz)"
+echo "    Expect: midband plateau, LF roll-off (coupling), HF roll-off (device+C)"
+echo "================================================================"
+ac dec 40 1 10Meg
+print vdb(out)
+asciiplot vdb(out)
+
+echo "================================================================"
+echo " 4) LARGE-SIGNAL / CLIPPING - same circuit, Vin = 120 mVpk"
+echo "    Output should show obvious limiting (flat tops / rail proximity)"
+echo "================================================================"
+alterparam VINAMP=120m
+reset
+tran 20u 60m
+meas tran vout_hi_clip MAX v(out) FROM=35m TO=60m
+meas tran vout_lo_clip MIN v(out) FROM=35m TO=60m
+asciiplot v(out) (5.615+20*v(in))
+
+
+echo "================================================================"
+echo " 5) DESIGN COMPARISON - restore drive; CC = 0.047 uF (was 10 uF)"
+echo "    AC gain curve: low-frequency corner moves UP (narrower bass)"
+echo "================================================================"
+alterparam VINAMP=10m
+alterparam CC=0.047u
+reset
+ac dec 40 1 10Meg
+print vdb(out)
+asciiplot vdb(out)
+
+
+quit
+.endc
+
+.end

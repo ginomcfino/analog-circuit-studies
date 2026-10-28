@@ -1,0 +1,50 @@
+{
+  "simulator": "ngspice 47",
+  "schematic_netlister": "Qucs-S 26.1.1",
+  "transient_points": 100008,
+  "transient_final_time_s": 1.0,
+  "gate_voltage_v": {
+    "v(gate1)": {
+      "min": -1.3178004435754374,
+      "max": -0.8302545416273197,
+      "mean": -1.071392965933156,
+      "five_hz_fundamental_peak": 0.22935442672569908,
+      "five_hz_phase_deg": -0.005217927835960627
+    },
+    "v(gate2)": {
+      "min": -1.317904269031187,
+      "max": -0.8302845974473765,
+      "mean": -1.0713930103295293,
+      "five_hz_fundamental_peak": 0.22935475935370964,
+      "five_hz_phase_deg": 0.00525114318531998
+    }
+  },
+  "audio_windows": [
+    {
+      "center_s": 0.25,
+      "lfo_mean_v": 4.979463684801819,
+      "dry_fundamental_peak_v": 0.09999990000000003,
+      "wet_fundamental_peak_v": 0.09999791915746592,
+      "wet_relative_phase_deg": -118.19474284685047,
+      "blended_fundamental_peak_v": 0.05135750171104795
+    },
+    {
+      "center_s": 0.35,
+      "lfo_mean_v": -4.97946368480182,
+      "dry_fundamental_peak_v": 0.09999989999999999,
+      "wet_fundamental_peak_v": 0.10000237878185811,
+      "wet_relative_phase_deg": -163.59812869006478,
+      "blended_fundamental_peak_v": 0.014264672280229986
+    }
+  ],
+  "warnings_in_log": [],
+  "provenance": {
+    "dataset": "project/guitar-vibrato.dat.ngspice",
+    "sha256": "b23d15f96af6fa1cd4876d7277fb24e379ae450bb6c4c59267f6b4dc65ca0fda",
+    "simulation_rerun": true,
+    "netlister": "Qucs-S 26.1.1",
+    "simulator": "ngspice 47",
+    "native_dataset_conversion": "Qucs-S --run",
+    "plots": "Read refreshed numeric samples; no further simulations or model tuning."
+  }
+}

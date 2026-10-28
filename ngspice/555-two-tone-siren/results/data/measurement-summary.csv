@@ -1,0 +1,5 @@
+measurement,value,unit,source_file,source_column
+modulation_period,1.03715767,s,siren_measurements.dat,2
+duty_cycle,73.352139,%,siren_measurements.dat,4
+dee_frequency,709.018718,Hz,siren_measurements.dat,6
+dah_frequency,575.175429,Hz,siren_measurements.dat,8

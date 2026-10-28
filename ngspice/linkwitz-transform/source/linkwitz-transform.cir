@@ -1,0 +1,131 @@
+* Linkwitz Transform equalizer with sealed-box speaker equivalent
+* 
+* Reference topology (2-stage):
+*    Stage 1 - U1 Linkwitz transform active network -> port veq (EQ)
+*    Stage 2 - E1 + LCR speaker equivalent model -> port vout (OUT)
+*
+* HOW TO RUN
+*     ngspice linkwitz_circuit_final.cir
+
+.title Linkwitz Transform - Fountek FR88EX Sealed Box Equalizer
+
+.include models/Tl072.mod
+
+* Driver / sealed-box parameters (Fountek FR88EX 3" full-range, ref. schematic)
+* BoxVol = Vb in schematic (renamed: Vb collides with TL072 internal node VB)
+.param Fs=95 Qts=0.472 Vas=0.04481 Qtc=0.7071
+.param BoxVol='Vas/((Qtc/Qts)*(Qtc/Qts)-1.)'
+.param Fc='Fs*sqrt((Vas/BoxVol)+1.)'
+.param Lspk=1
+.param Cspk='1./(39.47842*Fc*Fc*Lspk)'
+.param Rspk='6.2831853*Fc/Qtc'
+
+* Linkwitz transform design parameters
+.param C2sel=0.047u Fc0=Fc Qt0=Qtc Fcx=80 Qtx=0.7071
+.param k='(Fc0/Fcx - Qt0/Qtx)/(Qt0/Qtx - Fcx/Fc0)'
+.param pR1='(1/(2*3.141592653589793*Fc0*C2sel*(2*Qt0*(1+k))))'
+.param pR2='2*k*pR1'
+.param pR3='pR1*(Fc0/Fcx)*(Fc0/Fcx)'
+.param pC1='C2sel*(2*Qt0*(1+k))*(2*Qt0*(1+k))'
+.param pC3='pC1*(Fcx/Fc0)*(Fcx/Fc0)'
+
+* Power supplies (+/-15V, TL072 macromodel)
+VCC vcc 0 DC 15
+VEE vee 0 DC -15
+
+* Input source V1 at port vin (IN)
+*     AC: 1V stimulus for 10Hz ... 10kHz Bode plots
+*     TRAN: 10Hz squre wave, 1s (50ms high / 50ms low)
+V1 vin 0 DC 0 AC 1 PULSE(0 1 0 1u 1u 50m 100m)
+
+* Stage 1 - Linkwitz transform (U1, TL072) -> veq (EQ port)
+*
+* Input network:
+*   vin -- R1 -- n_a -- R2 -------- lt_nin
+*                |
+*                C4
+*                |
+*               GND
+*
+*   vin -- R3 -- n_b -- C3 -------- lt_nin
+*
+* Feedback network:
+*   lt_nin -- R4 -- fb_a -- C2f --- veq
+*
+*   lt_nin -- R5 -- fb_b -- R6 ---- veq
+*                       |
+*                       C5
+*                       |
+*                      GND
+R1    vin     n_a     {pR1}
+R2    n_a     lt_nin  {pR1}
+C4    n_a     0       {PC1}
+
+R3    vin     n_b     {pR2}
+C3    n_b     lt_nin  {C2sel}
+
+R4    lt_nin  fb_a    {pR2}
+C2f   fb_a    veq     {C2sel}
+
+R5    lt_nin  fb_b    {pR3}
+R6    fb_b    veq     {pR3}
+C5    fb_b    0       {pC3}
+
+XU1 0 lt_nin vcc vee veq TL072
+
+* Stage 2 - Speaker equivalent model -> vout (OUT port)
+E1    splk_drv 0 veq 0 1
+R7    splk_drv   splk_ser  {Rspk}
+C1    splk_ser   vout      {Cspk}
+L1    vout       0         {Lspk}
+
+* Automated analysis control
+.control
+set noaskquit
+set filetype=ascii
+set hcopydevtype=svg
+set xbrushwidth=2
+
+* AC frequency-response analysis: 10Hz - 10kHz
+ac oct 10 10 10k
+set wr_singlescale
+
+* AC data files
+wrdata linkwitz_ac_eq.dat      vdb(veq) vp(veq)
+wrdata linkwitz_ac_out.dat     vdb(vout) vp(vout)
+wrdata linkwitz_ac_ratio.dat   vdb(vout)-vdb(veq) vp(vout)-vp(veq)
+
+* EQ port - gain amplitude and phase
+hardcopy linkwitz_ac_eq_mag.svg     vdb(veq)
+hardcopy linkwitz_ac_eq_phase.svg   vp(veq)
+
+* OUT port - gain amplitude and phase
+hardcopy linkwitz_ac_out_mag.svg      vdb(vout)
+hardcopy linkwitz_ac_out_phase.svg    vp(vout)
+
+* OUT/EQ ratio - gain amplitude and phase
+let ratio_mag = vdb(vout)-vdb(veq)
+let ratio_ph = vp(vout)-vp(veq)
+hardcopy linkwitz_ac_ratio_mag.svg    ratio_mag
+hardcopy linkwitz_ac_ratio_phase.svg  ratio_ph
+
+* Transient analysis: 1s, V1 = 10Hz square wave
+tran 100u 1 0
+
+* Transient data files
+wrdata linkwitz_tran_vin.dat     v(vin)
+wrdata linkwitz_tran_eq.dat      v(veq)
+wrdata linkwitz_tran_out.dat     v(vout)
+wrdata linkwitz_tran_ratio.dat   v(vout)/v(veq)
+
+* Input V1, EQ, and OUT waveforms
+hardcopy linkwitz_tran_waveforms.svg v(vin) v(veq) v(vout)
+
+* OUT/EQ ratio (EQ ~ low-pass, OUT ~ blocked at 10Hz)
+let tran_ratio = v(vout)/v(veq)
+hardcopy linkwitz_tran_ratio.svg     tran_ratio
+
+quit
+.endc
+
+.end

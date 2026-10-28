@@ -1,57 +1,65 @@
-# Simulation Visuals
+# Simulation Gallery
 
-Existing Linkwitz-transform outputs, preserved without rerunning the circuit. These are simulated electrical responses, not measured acoustic performance. AC plots use a 1 V input over 10 Hz–10 kHz. Phase is in radians.
+Selected results from the seven retained studies. Every image is a simulation plot or native CAD export; no hardware photographs or measured signals are implied. Open each study for its full analysis and data.
 
-## Reference circuit
+## Active bandpass filter
 
-The supplied educational schematic includes its original 2015-seminar annotations. The simulation netlist implements the reference topology with the bundled TL072 model.
+[Active bandpass filter study](../qucs-s/active-bandpass-filter/)
 
-![Supplied educational reference schematic for the Linkwitz transform and sealed-box speaker equivalent](../linkwitz-transform/reference-schematic.png)
+![Active bandpass filter simulation result](../qucs-s/active-bandpass-filter/results/plots/corrected-amplitude-sweep.png)
 
-## Equalizer stage: EQ
+Qucs-S + ngspice; fresh corrected amplitude sweep, measured over 80–100 ms.
 
-The `veq` node is the equalizer output before the speaker-equivalent model.
+[Native Qucs plot view](../qucs-s/active-bandpass-filter/docs/images/qucs-plots.png) · [Editable Qucs data display](../qucs-s/active-bandpass-filter/project/active-bandpass-filter.dpl). These are exports of recorded data, not window screenshots.
 
-**EQ magnitude — `vdb(veq)`, dB relative to the 1 V AC input.**
+## Guitar phase-shift / modulation
 
-![Equalizer-stage magnitude versus frequency in decibels](../linkwitz-transform/linkwitz_ac_eq_mag.svg)
+[Guitar phase-shift / modulation study](../qucs-s/guitar-vibrato/)
 
-**EQ phase — `vp(veq)`, radians.**
+![Guitar phase-shift / modulation simulation result](../qucs-s/guitar-vibrato/results/plots/phase-and-blend.png)
 
-![Equalizer-stage phase versus frequency in radians](../linkwitz-transform/linkwitz_ac_eq_phase.svg)
+Qucs-S + ngspice; fresh wet/dry phase comparison at two points of the modulation cycle.
 
-## Combined equalizer and speaker-equivalent model: OUT
+[Native Qucs plot view](../qucs-s/guitar-vibrato/docs/images/qucs-plots.png) · [Editable Qucs data display](../qucs-s/guitar-vibrato/project/guitar-vibrato.dpl). These are exports of recorded data, not window screenshots.
 
-The `vout` node includes both stages. This is the combined modeled response, distinct from the equalizer response above.
+## Dual ±12 V supply
 
-**OUT magnitude — `vdb(vout)`, dB relative to the 1 V AC input.**
+[Dual ±12 V supply study](../qucs-s/dual-rail-12v-supply/)
 
-![Combined equalizer and speaker-equivalent magnitude versus frequency in decibels](../linkwitz-transform/linkwitz_ac_out_mag.svg)
+![Dual ±12 V supply simulation result](../qucs-s/dual-rail-12v-supply/results/plots/startup-transient.png)
 
-**OUT phase — `vp(vout)`, radians.**
+Qucs-S + ngspice; plotted from the supplied startup dataset using behavioral regulator models.
 
-![Combined equalizer and speaker-equivalent phase versus frequency in radians](../linkwitz-transform/linkwitz_ac_out_phase.svg)
+[Native Qucs plot view](../qucs-s/dual-rail-12v-supply/docs/images/qucs-plots.png) · [Editable Qucs data display](../qucs-s/dual-rail-12v-supply/project/dual-rail-12v-supply.dpl). These are exports of recorded data, not window screenshots.
 
-## Speaker-equivalent model: OUT/EQ
+## 555 two-tone siren
 
-Dividing OUT by EQ removes the equalizer contribution from the AC response.
+[555 two-tone siren study](../ngspice/555-two-tone-siren/)
 
-**OUT/EQ magnitude — `vdb(vout) - vdb(veq)`, dB.** The saved plot's vertical axis omits a unit label; the plotted expression is in dB.
+![555 two-tone siren simulation result](../ngspice/555-two-tone-siren/results/plots/siren_modulation.svg)
 
-![Speaker-equivalent OUT over EQ magnitude ratio versus frequency in decibels](../linkwitz-transform/linkwitz_ac_ratio_mag.svg)
+ngspice; supplied slow-modulation waveform. Audio-tone details are linked in the study.
 
-**OUT/EQ phase difference — `vp(vout) - vp(veq)`, radians.** This is the saved phase subtraction; wrapping can cause discontinuities. It is not a newly unwrapped plot.
+## Hartley LC oscillator
 
-![Speaker-equivalent OUT minus EQ phase difference versus frequency in radians](../linkwitz-transform/linkwitz_ac_ratio_phase.svg)
+[Hartley LC oscillator study](../ngspice/hartley-oscillator/)
 
-## Transient response
+![Hartley LC oscillator simulation result](../ngspice/hartley-oscillator/results/plots/hartley_steady_state_zoom.svg)
 
-**Input, EQ and OUT voltages — 0–1 V, 10 Hz square-wave stimulus over one second.** The three legend entries are `v(vin)`, `v(veq)` and `v(vout)`; the vertical axis is volts.
+ngspice; supplied steady-state detail, 4.80–4.85 ms. The README distinguishes the target frequency from recorded evidence.
 
-![Input, equalizer output and combined modeled output transient voltages over one second](../linkwitz-transform/linkwitz_tran_waveforms.svg)
+## Two-stage BJT amplifier
 
-**Diagnostic only: [instantaneous OUT/EQ ratio](../linkwitz-transform/linkwitz_tran_ratio.svg).** This dimensionless time-domain division is sensitive to EQ values near zero and produces large spikes. It is not the AC transfer function and is not a useful showcase of gain or stability. The plot is retained for traceability.
+[Two-stage BJT amplifier study](../ngspice/bjt-amplifier/)
 
-## Other studies
+![Two-stage BJT amplifier simulation result](../ngspice/bjt-amplifier/results/plots/ac-comparison-from-saved-log.png)
 
-The active-bandpass and guitar-vibrato folders contain schematics and saved Qucs-S datasets, but no standalone exported plot images. Their plots should be regenerated and reviewed in Qucs-S before adding them to this gallery; the vibrato connectivity issue is documented in its study notes.
+ngspice; AC curves reconstructed from saved printed values, without a new simulation.
+
+## Linkwitz transform equalizer
+
+[Linkwitz transform equalizer study](../ngspice/linkwitz-transform/)
+
+![Linkwitz transform equalizer simulation result](../ngspice/linkwitz-transform/results/plots/linkwitz_ac_out_mag.svg)
+
+ngspice; supplied combined equalizer and speaker-equivalent response. This is an electrical model, not acoustic measurement.

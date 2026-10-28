@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-28",
+  "tools": {
+    "qucs_s": "26.1.1",
+    "ngspice": "47"
+  },
+  "retained_studies": 7,
+  "qucs_studies": 3,
+  "native_ngspice_studies": 4,
+  "new_simulations": [
+    "active-bandpass-filter",
+    "guitar-vibrato"
+  ],
+  "native_ngspice_circuit_reruns": 0,
+  "ngspice_load_only": {
+    "datasets": 8,
+    "svg_views": 15,
+    "simulations": 0
+  },
+  "native_qucs_display_panels": {
+    "active-bandpass-filter": 17,
+    "guitar-vibrato": 6,
+    "dual-rail-12v-supply": 5
+  },
+  "window_screenshots": false,
+  "visual_evidence": "Native Qucs exports and plots from recorded data"
+}
