@@ -1,0 +1,100 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  width="100%" height="100%" viewBox="0 0 1024 768"
+  style="fill: none; stroke-width: 2; font-family: Helvetica;
+ font: Helvetica;
+">
+
+<!-- Creator: NGspice -->
+
+<rect x="0" y="0" width="1024" height="768" fill="black" stroke="none"/>
+<text stroke="none" fill="white" font-size="16" x="358" y="752">
+frequency
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="16">
+ac1: Linkwitz Transform - Fountek FR88EX Sealed Box Equalizer
+</text>
+<path stroke="white" stroke-width="2" d="M60 704l0 -638"/>
+<text stroke="none" fill="white" font-size="16" x="50" y="728">
+10
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M113 704l0 -638M150 704l0 -638M179 704l0 -638M203 704l0 -638M223 704l0 -638M241 704l0 -638M256 704l0 -638M270 704l0 -638M282 704l0 -638M294 704l0 -638M304 704l0 -638M314 704l0 -638"/>
+<path stroke="white" stroke-dasharray="1,2" d="M323 704l0 -638M331 704l0 -638M339 704l0 -638M347 704l0 -638M354 704l0 -638"/>
+<path stroke="white" stroke-width="2" d="M361 704l0 -638"/>
+<text stroke="none" fill="white" font-size="16" x="346" y="728">
+100
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M414 704l0 -638M451 704l0 -638M480 704l0 -638M504 704l0 -638M524 704l0 -638M542 704l0 -638M557 704l0 -638M571 704l0 -638M583 704l0 -638M595 704l0 -638M605 704l0 -638M615 704l0 -638"/>
+<path stroke="white" stroke-dasharray="1,2" d="M624 704l0 -638M632 704l0 -638M640 704l0 -638M648 704l0 -638M655 704l0 -638"/>
+<path stroke="white" stroke-width="2" d="M662 704l0 -638"/>
+<text stroke="none" fill="white" font-size="16" x="642" y="728">
+10^3
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M715 704l0 -638M752 704l0 -638M781 704l0 -638M805 704l0 -638M825 704l0 -638M843 704l0 -638M858 704l0 -638M872 704l0 -638M884 704l0 -638M896 704l0 -638M906 704l0 -638M916 704l0 -638"/>
+<path stroke="white" stroke-dasharray="1,2" d="M925 704l0 -638M933 704l0 -638M941 704l0 -638M949 704l0 -638M956 704l0 -638"/>
+<path stroke="white" stroke-width="2" d="M963 704l0 -638"/>
+<text stroke="none" fill="white" font-size="16" x="943" y="728">
+10^4
+</text>
+<text stroke="none" fill="white" font-size="16" x="614" y="752">
+Hz
+</text>
+<path stroke="white" stroke-width="2" d="M60 704l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="712">
+-0.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 646l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="654">
+1.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 588l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="596">
+2.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 530l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="538">
+3.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 472l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="480">
+4.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 414l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="422">
+5.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 356l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="364">
+6.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 298l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="306">
+7.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 240l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="248">
+8.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 182l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="28" y="190">
+9.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 124l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="132">
+10.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 66l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="74">
+11.0
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="32">
+dB
+</text>
+<path stroke="red" d="M451 23l45 0"/>
+<text stroke="none" fill="white" font-size="16" x="506" y="32">
+vdb(veq)
+</text>
+<path stroke="red" d="M60 124l91 0 9 1 9 0 9 1 9 0 18 2 27 6 9 3 9 4 9 6 9 7 9 9 10 11 9 13 9 17 9 20 9 23 9 27 9 30 9 33 9 35 27 108 9 33 9 31 9 28 9 25 10 21 9 18 9 14 9 12 9 9 9 8 9 6 18 8 27 6 27 3 9 0 9 1 19 0 9 1 353 0"/>
+</svg>

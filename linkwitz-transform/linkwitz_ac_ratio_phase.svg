@@ -1,0 +1,89 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  width="100%" height="100%" viewBox="0 0 1024 768"
+  style="fill: none; stroke-width: 2; font-family: Helvetica;
+ font: Helvetica;
+">
+
+<!-- Creator: NGspice -->
+
+<rect x="0" y="0" width="1024" height="768" fill="black" stroke="none"/>
+<text stroke="none" fill="white" font-size="16" x="358" y="752">
+frequency
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="16">
+ac1: Linkwitz Transform - Fountek FR88EX Sealed Box Equalizer
+</text>
+<path stroke="white" stroke-width="2" d="M50 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="40" y="728">
+10
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M104 704l0 -640M142 704l0 -640M172 704l0 -640M196 704l0 -640M217 704l0 -640M235 704l0 -640M251 704l0 -640M265 704l0 -640M278 704l0 -640M289 704l0 -640M300 704l0 -640M310 704l0 -640"/>
+<path stroke="white" stroke-dasharray="1,2" d="M319 704l0 -640M328 704l0 -640M336 704l0 -640M343 704l0 -640M351 704l0 -640"/>
+<path stroke="white" stroke-width="2" d="M358 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="343" y="728">
+100
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M412 704l0 -640M450 704l0 -640M480 704l0 -640M504 704l0 -640M525 704l0 -640M543 704l0 -640M559 704l0 -640M573 704l0 -640M586 704l0 -640M597 704l0 -640M608 704l0 -640M618 704l0 -640"/>
+<path stroke="white" stroke-dasharray="1,2" d="M627 704l0 -640M636 704l0 -640M644 704l0 -640M651 704l0 -640M659 704l0 -640"/>
+<path stroke="white" stroke-width="2" d="M666 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="646" y="728">
+10^3
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M720 704l0 -640M758 704l0 -640M788 704l0 -640M812 704l0 -640M833 704l0 -640M851 704l0 -640M867 704l0 -640M881 704l0 -640M894 704l0 -640M905 704l0 -640M916 704l0 -640M926 704l0 -640"/>
+<path stroke="white" stroke-dasharray="1,2" d="M935 704l0 -640M944 704l0 -640M952 704l0 -640M959 704l0 -640M967 704l0 -640"/>
+<path stroke="white" stroke-width="2" d="M974 704l0 -640"/>
+<text stroke="none" fill="white" font-size="16" x="954" y="728">
+10^4
+</text>
+<text stroke="none" fill="white" font-size="16" x="614" y="752">
+Hz
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 704l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="712">
+-7.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 624l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="632">
+-6.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 544l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="552">
+-5.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 464l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="472">
+-4.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 384l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="392">
+-3.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 304l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="312">
+-2.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 224l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="8" y="232">
+-1.0
+</text>
+<path stroke="white" stroke-width="2" d="M50 144l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="152">
+0.0
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M50 64l924 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="72">
+1.0
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="32">
+     
+</text>
+<path stroke="red" d="M462 23l46 0"/>
+<text stroke="none" fill="white" font-size="16" x="518" y="32">
+ratio_ph
+</text>
+<path stroke="red" d="M50 403l9 1 10 0 27 3 10 0 27 3 10 1 9 1 9 2 10 1 9 2 9 1 9 2 10 2 27 6 10 2 18 6 10 3 9 3 18 8 10 4 18 10 9 6 10 6 9 6 9 7 10 7 9 7 18 16 10 7 18 16 9 7 10 7 9 7 9 6 9 5 10 6 9 5 9 4 10 4 18 8 9 3 10 3 18 6 9 2 10 2 18 4"/>
+<path stroke="red" d="M606 621l10 2 9 1 9 2 9 1 10 2 27 3 10 1 18 2 10 1 9 0 18 2 10 0 9 1 9 0 9 1 10 0 9 1 9 0 10 1 18 0 9 1 28 0 9 1 47 0 9 -502 28 0"/>
+</svg>

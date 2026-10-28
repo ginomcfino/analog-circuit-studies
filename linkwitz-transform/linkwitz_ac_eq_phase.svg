@@ -1,0 +1,93 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  width="100%" height="100%" viewBox="0 0 1024 768"
+  style="fill: none; stroke-width: 2; font-family: Helvetica;
+ font: Helvetica;
+">
+
+<!-- Creator: NGspice -->
+
+<rect x="0" y="0" width="1024" height="768" fill="black" stroke="none"/>
+<text stroke="none" fill="white" font-size="16" x="358" y="752">
+frequency
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="16">
+ac1: Linkwitz Transform - Fountek FR88EX Sealed Box Equalizer
+</text>
+<path stroke="white" stroke-width="2" d="M60 704l0 -639"/>
+<text stroke="none" fill="white" font-size="16" x="50" y="728">
+10
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M113 704l0 -639M150 704l0 -639M179 704l0 -639M203 704l0 -639M223 704l0 -639M241 704l0 -639M256 704l0 -639M270 704l0 -639M282 704l0 -639M294 704l0 -639M304 704l0 -639M314 704l0 -639"/>
+<path stroke="white" stroke-dasharray="1,2" d="M323 704l0 -639M331 704l0 -639M339 704l0 -639M347 704l0 -639M354 704l0 -639"/>
+<path stroke="white" stroke-width="2" d="M361 704l0 -639"/>
+<text stroke="none" fill="white" font-size="16" x="346" y="728">
+100
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M414 704l0 -639M451 704l0 -639M480 704l0 -639M504 704l0 -639M524 704l0 -639M542 704l0 -639M557 704l0 -639M571 704l0 -639M583 704l0 -639M595 704l0 -639M605 704l0 -639M615 704l0 -639"/>
+<path stroke="white" stroke-dasharray="1,2" d="M624 704l0 -639M632 704l0 -639M640 704l0 -639M648 704l0 -639M655 704l0 -639"/>
+<path stroke="white" stroke-width="2" d="M662 704l0 -639"/>
+<text stroke="none" fill="white" font-size="16" x="642" y="728">
+10^3
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M715 704l0 -639M752 704l0 -639M781 704l0 -639M805 704l0 -639M825 704l0 -639M843 704l0 -639M858 704l0 -639M872 704l0 -639M884 704l0 -639M896 704l0 -639M906 704l0 -639M916 704l0 -639"/>
+<path stroke="white" stroke-dasharray="1,2" d="M925 704l0 -639M933 704l0 -639M941 704l0 -639M949 704l0 -639M956 704l0 -639"/>
+<path stroke="white" stroke-width="2" d="M963 704l0 -639"/>
+<text stroke="none" fill="white" font-size="16" x="943" y="728">
+10^4
+</text>
+<text stroke="none" fill="white" font-size="16" x="614" y="752">
+Hz
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 704l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="712">
+2.30
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 633l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="641">
+2.40
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 562l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="570">
+2.50
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 491l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="499">
+2.60
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 420l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="428">
+2.70
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 349l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="357">
+2.80
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 278l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="286">
+2.90
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 207l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="215">
+3.00
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 136l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="144">
+3.10
+</text>
+<path stroke="white" stroke-width="2" stroke-dasharray="1,2" d="M60 65l903 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="73">
+3.20
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="32">
+rad
+</text>
+<path stroke="red" d="M451 23l45 0"/>
+<text stroke="none" fill="white" font-size="16" x="506" y="32">
+vp(veq)
+</text>
+<path stroke="red" d="M60 162l18 8 18 10 27 18 9 7 10 7 9 9 9 8 18 20 18 24 9 13 9 15 9 16 9 18 9 19 9 21 9 22 18 50 10 28 9 28 9 29 9 28 9 27 9 24 9 21 9 16 9 10 9 5 9 -2 9 -9 9 -14 9 -20 9 -23 9 -27 10 -27 9 -29 18 -56 9 -26 9 -25 9 -23 9 -21"/>
+<path stroke="red" d="M495 361l9 -20 9 -18 18 -32 18 -26 9 -12 18 -20 10 -9 18 -16 9 -7 27 -18 18 -10 27 -12 9 -3 9 -4 9 -3 9 -2 10 -3 45 -10 9 -1 9 -2 54 -6 9 0 9 -1 19 0 9 -1 36 0 9 1 18 0"/>
+</svg>
